@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CatalogueApp</string>
+    <string name="title">Bear Catalogue:\n</string>
+    <string name="brownbear">Large bears like the brown bear are indigenous to North America and Eurasia. Only its nearest relative, the polar bear, which is marginally larger on average and considerably less variable in size, may match it in size among the carnivorans. Because adult male brown bears are larger and more compactly formed than females, the species is sexually dimorphic.</string>
+    <string name="polarbear">Large bears like the polar bear are indigenous to the Arctic. It can interbreed with the brown bear, with which it shares a close relationship. With adult males weighing between 300 and 800 kg, the polar bear is the largest terrestrial carnivore and bear species still in existence. Because adult females are significantly smaller than males, the species exhibits sexual dimorphism. </string>
+    <string name="pandabear">China is home to the giant panda, commonly referred to as the panda bear or just the panda. Its white coat with black patches around the eyes, ears, legs, and shoulders is what makes it unique. It has a round body, and adults are usually 1.2 to 1.9 m (3 ft 11 in to 6 ft 3 in) long and weigh 100 to 115 kg (220 to 254 lb). Males are usually 10–20% larger than females, indicating sexual dimorphism. </string>
+    <string name="slothbear">The sloth bear is a unique bear species found mostly in India and Sri Lanka. Unlike other bears, it has a shaggy black coat, a long snout, and a white "U" or "Y"-shaped mark on its chest. These bears are known for their love of insects, especially termites and ants, which they suck up through their lips like a vacuum. They are excellent climbers and often sleep in trees to stay safe from predators like tigers</string>
+    <string name="back_button"> &lt; Previous </string>
+    <string name="forward_button"> Next &gt; </string>
+</resources>
