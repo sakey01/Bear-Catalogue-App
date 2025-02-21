@@ -1,0 +1,88 @@
+package com.catalogueapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    private ImageView[] bearImages;
+    private TextView title, bearDescription;
+    private Button backButton, nextButton;
+    private LinearLayout mainLayout;
+    private HorizontalScrollView scrollView;
+    private int currentIndex = 0;
+
+    private final String[] titles = {"Brown Bear", "Polar Bear", "Panda Bear", "Sloth Bear"};
+    private final int[] descriptions = {
+            R.string.brownbear, R.string.polarbear, R.string.pandabear, R.string.slothbear
+    };
+    private final int[] images = {
+            R.drawable.brownbear, R.drawable.polarbear, R.drawable.pandabear, R.drawable.slothbear
+    };
+    private final int[] backgrounds = {
+            R.drawable.b_bg, R.drawable.p_bg, R.drawable.pa_bg, R.drawable.s_bg
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mainLayout = findViewById(R.id.main);
+        backButton = findViewById(R.id.previous);
+        nextButton = findViewById(R.id.next);
+        title = findViewById(R.id.title);
+        bearDescription = findViewById(R.id.beardescription);
+        scrollView = findViewById(R.id.scollview);
+        bearImages = new ImageView[]{
+                findViewById(R.id.brownbear),
+                findViewById(R.id.polarbear),
+                findViewById(R.id.pandabear),
+                findViewById(R.id.slothbear)
+        };
+
+        ImageView mainBearImage = findViewById(R.id.main_bear);
+
+        backButton.setOnClickListener(v -> navigate(-1));
+        nextButton.setOnClickListener(v -> navigate(1));
+
+        for (int index = 0; index < bearImages.length; index++) {
+            int finalIndex = index;
+            bearImages[index].setOnClickListener(v -> selectBear(finalIndex));
+        }
+
+        updateUI();
+    }
+
+    private void navigate(int direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = 0;
+        if (currentIndex >= titles.length) currentIndex = titles.length - 1;
+        updateUI();
+        centerImage(bearImages[currentIndex]);
+    }
+
+    private void selectBear(int index) {
+        currentIndex = index;
+        updateUI();
+        centerImage(bearImages[index]);
+    }
+
+    private void updateUI() {
+        title.setText(titles[currentIndex]);
+        bearDescription.setText(getString(descriptions[currentIndex]));
+        ((ImageView) findViewById(R.id.main_bear)).setImageResource(images[currentIndex]);
+        mainLayout.setBackgroundResource(backgrounds[currentIndex]);
+    }
+
+    private void centerImage(View image) {
+        int scrollX = image.getLeft() - (scrollView.getWidth() - image.getWidth()) / 2;
+        scrollView.smoothScrollTo(scrollX, 0);
+    }
+}
